@@ -1,4 +1,4 @@
-# Artem-pizza сервер
+## pizza-ingredients-server
 
 Для запуска выполните команду:
 ```
