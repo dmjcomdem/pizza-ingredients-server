@@ -10,13 +10,13 @@ const jwt = require("jsonwebtoken");
  *    description: API авторизации в админке. Позволяет получить доступ к созданию, обновлению и удалению ингредиентов.
  */
 
+
 /**
  * @swagger
  * /admin-auth/login:
  *   post:
  *     tags: ["Admin Auth"]
  *     summary: Авторизоваться в админке
- *     description: "Email: example@email.com, password: password. В общем если выполнить с данными из примера - авторизация должна пройти успешно."
  *     requestBody:
  *       content:
  *         application/json:

@@ -7,16 +7,16 @@ const cors = require("cors");
 const morgan = require("morgan");
 const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
-const ingredientsRouter = require("./routes/ingredients");
-const ordersRouter = require("./routes/orders");
-const adminAuthRouter = require("./routes/adminAuth");
+const ingredientsRouter = require("./routes/ingredients")
+const ordersRouter = require("./routes/orders")
+const adminAuthRouter = require("./routes/adminAuth")
 
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const passportJWT = require("passport-jwt");
 
-const JWTStrategy = passportJWT.Strategy;
-const ExtractJWT = passportJWT.ExtractJwt;
+JWTStrategy = passportJWT.Strategy;
+ExtractJWT = passportJWT.ExtractJwt;
 
 const adapter = new FileSync("db.json");
 const db = low(adapter);
@@ -30,13 +30,13 @@ app.use(passport.initialize());
 const user = {
   id: "1",
   email: "example@email.com",
-  password: "password"
+  password: "password",
 };
 
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "email"
+      usernameField: "email",
     },
     (email, password, done) => {
       if (email === user.email && password === user.password) {
@@ -52,25 +52,26 @@ passport.use(
   new JWTStrategy(
     {
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-      secretOrKey: "jwt_secret"
+      secretOrKey: "jwt_secret",
     },
     (jwt_payload, done) => {
       if (user.id === jwt_payload.user._id) {
         return done(null, user);
       } else {
         return done(null, false, {
-          message: "Token not matched."
+          message: "Token not matched.",
         });
       }
     }
   )
 );
 
+
 app.db = db;
 
 app.use(
   fileUpload({
-    createParentPath: true
+    createParentPath: true,
   })
 );
 
@@ -86,10 +87,10 @@ const swaggerOptions = {
     openapi: "3.0.0",
     info: {
       title: "Library API",
-      version: "1.0.0"
-    }
+      version: "1.0.0",
+    },
   },
-  apis: ["./routes/*.js"]
+  apis: ["./routes/*.js"],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
