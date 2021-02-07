@@ -170,7 +170,7 @@ router.post(
         id: nanoid(idlength),
         name,
         slug,
-        price,
+        price: Number(price),
         category,
         image: fileName,
         thumbnail: thumbFileName,
