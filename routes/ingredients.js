@@ -232,7 +232,7 @@ router.put("/:ingredientId", (req, res) => {
       .assign({
         name,
         slug,
-        price,
+        price: Number(price),
         category,
         image: fileName,
         thumbnail: thumbFileName,

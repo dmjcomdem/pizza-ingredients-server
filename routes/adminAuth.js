@@ -57,26 +57,4 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-/**
- * @swagger
- * /admin-auth/logout:
- *   get:
- *     tags: ["Admin Auth"]
- *     summary: Разлогиниться
- *     responses:
- *       200:
- *         description: Логаут выполнен успешно
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Order'
- *
- */
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/");
-});
-
 module.exports = router;
